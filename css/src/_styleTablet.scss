@@ -1,0 +1,28 @@
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .cities-container{
+    width: 100%;
+    float: none;
+    .city{
+
+      width: 15%;
+      float: left;
+      margin-right: 1%;
+   }
+   input{
+     float: left;
+   }
+   button{
+     float: left;
+     margin-right: 1%;
+   }
+
+  }
+  .weather-container{
+    clear:both;
+    margin: 0 auto;
+    float: none;
+  }
+}

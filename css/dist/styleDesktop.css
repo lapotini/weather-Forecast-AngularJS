@@ -1,0 +1,115 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+body {
+  font-family: Arial, sans-serif;
+  padding-top: 50px; }
+
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto; }
+  .wrapper:before, .wrapper:after {
+    content: "";
+    clear: both; }
+
+.weather-container {
+  font-size: 1em;
+  float: left;
+  padding: 2%;
+  box-sizing: border-box;
+  width: 68%;
+  background: #fff; }
+  .weather-container h2 {
+    text-align: center;
+    margin-bottom: 2%;
+    font-size: 22px;
+    font-family: Arial, sans-serif; }
+  .weather-container ul {
+    width: 100%; }
+    .weather-container ul li:nth-child(2n) {
+      color: white;
+      background-color: grey; }
+    .weather-container ul li {
+      padding: 3%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: block;
+      height: 50px; }
+      .weather-container ul li div {
+        display: inline-block; }
+      .weather-container ul li .day {
+        width: 20%; }
+      .weather-container ul li .temp {
+        width: 25%;
+        font-size: 1.2em; }
+      .weather-container ul li .clText {
+        width: 50%; }
+
+.cities-container {
+  float: right;
+  padding: 2%;
+  box-sizing: border-box;
+  width: 30%;
+  text-align: center; }
+  .cities-container input {
+    padding: 5px;
+    margin-bottom: 5px; }
+  .cities-container button {
+    padding: 5px; }
+  .cities-container .city {
+    position: relative;
+    font-size: 0,8em;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #8487ec;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.7s; }
+    .cities-container .city .delete {
+      position: absolute;
+      right: 5%;
+      top: 5%; }
+    .cities-container .city:hover {
+      background-color: #4045f0; }
+
+@media screen and (max-width: 767px) {
+  .cities-container {
+    width: 100%;
+    float: none; }
+    .cities-container .cities {
+      clear: both;
+      display: block; }
+      .cities-container .cities .city {
+        margin-left: 1%;
+        width: 22%;
+        float: left; }
+    .cities-container input {
+      float: left; }
+    .cities-container button {
+      float: left;
+      margin-right: 1%; }
+  .weather-container {
+    font-size: 0.7em;
+    clear: both;
+    float: none;
+    margin: 0 auto; } }
+
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+  .cities-container {
+    width: 100%;
+    float: none; }
+    .cities-container .city {
+      width: 15%;
+      float: left;
+      margin-right: 1%; }
+    .cities-container input {
+      float: left; }
+    .cities-container button {
+      float: left;
+      margin-right: 1%; }
+  .weather-container {
+    clear: both;
+    margin: 0 auto;
+    float: none; } }

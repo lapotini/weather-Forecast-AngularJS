@@ -1,0 +1,142 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: "";
+    clear: both;
+  }
+}
+
+body{
+  font-family: Arial, sans-serif;
+  padding-top: 50px;
+}
+.wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+  @include clearfix();
+}
+
+.weather-container{
+  font-size: 1em;
+  h2{
+    text-align: center;
+    margin-bottom: 2%;
+    font-size: 22px;
+    font-family: Arial, sans-serif;
+  }
+
+  float: left;
+  padding: 2%;
+  box-sizing: border-box;
+  width: 68%;
+  background: #fff;
+  ul{
+    width: 100%;
+    li:nth-child(2n){
+      color: white;
+      background-color: grey;
+    }
+    li{
+      padding: 3%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: block;
+      height: 50px;
+
+
+      div{
+        display: inline-block;
+      }
+      .day{
+        width: 20%;
+      }
+      .temp{
+        width: 25%;
+        font-size: 1.2em;
+      }
+      .clText{
+        width: 50%
+      }
+    }
+  }
+}
+.cities-container{
+  float: right;
+  padding: 2%;
+  box-sizing: border-box;
+  width: 30%;
+  text-align: center;
+  input{
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  button{
+    padding: 5px;
+  }
+  .city{
+    position: relative;
+    font-size: 0,8em;
+    width: 100%;
+    padding: 15px;
+    box-sizing:border-box;
+    border-radius: 10px;
+    background-color: #8487ec;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.7s;
+    .delete{
+      position: absolute;
+      right: 5%;
+      top: 5%;
+    }
+    &:hover{
+      background-color: #4045f0;
+    }
+
+  }
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+
+    .cities-container{
+      width: 100%;
+      float: none;
+      .cities{
+        clear: both;
+        display: block;
+
+
+      .city{
+        margin-left: 1%;
+        width: 22%;
+        float: left;
+      }
+      }
+   input{
+     float: left;
+   }
+   button{
+     float: left;
+     margin-right: 1%;
+   }
+
+  }
+  .weather-container{
+    font-size: 0.7em;
+
+    clear:both;
+    float: none;
+    margin: 0 auto;
+  }
+
+
+
+}
