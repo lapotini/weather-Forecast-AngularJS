@@ -8,7 +8,7 @@ angular.module('app').factory('weatherFactory', function ($http, $q) {
 
         var deferred = $q.defer();
 
-        $http.get(queryUrl).success(function (data, status, headers, config) {
+        $http.get(url).success(function (data, status, headers, config) {
             deferred.resolve(data);
             console.log(data);
         }).error(function (data, status, headers, config) {
