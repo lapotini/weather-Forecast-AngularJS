@@ -6,12 +6,19 @@ angular.module('app').controller('weatherCtrl', function ($rootScope, weatherFac
     $rootScope.$on('weatherQuery', function (event, city) {
         var url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&APPID=657ef7aabd3d5f744eb93ca11e2a19d4';
 
-       self.weatherGetData(url);
+        self.weatherGetData(url);
     });
 
 
     self.weatherGetData = function (url) {
         self.weatherData = weatherFactory.getData(url);
+
+
+        var timer = setTimeout(function tick() {
+            weatherFactory.getData(url);
+            timer = setTimeout(tick, 90000);
+        }, 90000);
+
         //the model returns a promise and THEN items
         self.weatherData.then(function (data) {
             self.weatherData = data;
@@ -29,11 +36,13 @@ angular.module('app').controller('weatherCtrl', function ($rootScope, weatherFac
     };
 
     //Find your location
-    function tryToFindUserLocation(){
+    function tryToFindUserLocation() {
         navigator.geolocation.getCurrentPosition(onLocationFoundSuccess, onLocationFoundError);
     };
     function onLocationFoundError() {
         console.log("Unable to retrieve your location");
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + 'Odessa' + '&APPID=657ef7aabd3d5f744eb93ca11e2a19d4';
+        self.weatherGetData(url);
     };
     function onLocationFoundSuccess(position) {
         var latitude = position.coords.latitude;

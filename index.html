@@ -17,44 +17,57 @@
             <input type="text" placeholder="Search city..." ng-model="citiesCtrl.cityName"/>
             <button type="button" name="button" ng-click="citiesCtrl.addCity()">Add city</button>
         </form>
-        <div class="city"
-             ng-repeat="city in citiesCtrl.cities"
-             ng-controller="cityCtrl as cityCtrl"
-             ng-click="cityCtrl.weatherQuerySubmit(city)">
-            {{city.cityName}}
-            <span class="delete" ng-click="cityCtrl.removeCity(city)">x</span>
+        <div ng-controller="cityCtrl as cityCtrl">
+            <div class="city"
+                 ng-repeat="city in citiesCtrl.cities"
+                 ng-click="cityCtrl.weatherQuerySubmit(city)"
+                 ng-class="{active: cityCtrl.isActive(city)}">
+                {{city.cityName}}
+                <span class="delete" ng-click="cityCtrl.removeCity(city)">x</span>
 
+            </div>
         </div>
     </div>
 
     <div class="weather-container"
          ng-controller="weatherCtrl as weatherCtrl">
-        <h2>Today weather forecast</h2>
-        <h3>{{weatherCtrl.weatherData.city.name}}, {{weatherCtrl.weatherData.city.country}}</h3>
-        <ul>
-            <li ng-repeat="weather in weatherCtrl.weatherData.list| limitTo: 3">
-                <div class="day">{{weather.dt_txt}}</div>
-                <div class="temp"><img ng-src="{{'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png'}}"  alt=""/>{{(weather.main.temp-273).toFixed(1)}}</div>
-                <div class="clText">
-                    <p>{{weather.weather[0].description}}</p>
-                    <p>{{weather.wind.speed}} m.s</p>
-                </div>
-            </li>
+        <h3 ng-if="weatherCtrl.weatherData.cod != 200">loading...</h3>
+
+        <div ng-if="weatherCtrl.weatherData.cod == 200">
+            <h2>Today weather forecast</h2>
+
+            <h3 class='location'>{{weatherCtrl.weatherData.city.name}}, {{weatherCtrl.weatherData.city.country}}</h3>
+            <ul>
+                <li ng-repeat="weather in weatherCtrl.weatherData.list| limitTo: 3">
+                    <div class="day">{{weather.dt_txt}}</div>
+                    <div class="temp"><img
+                            ng-src="{{'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png'}}" alt=""/>{{(weather.main.temp-273).toFixed(1)}}&deg;
+                    </div>
+                    <div class="clText">
+                        <p>{{weather.weather[0].description}}</p>
+
+                        <p>{{(weather.wind.speed).toFixed(0)}} m.s</p>
+                    </div>
+                </li>
 
 
-        </ul>
-        <h2>Future weather forecast</h2>
-        <ul>
-            <li ng-repeat="(index, weather) in weatherCtrl.weatherWeekData">
-                <div class="day">{{weather.dt_txt}}</div>
-                <div class="temp"><img ng-src={{'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png'}} alt=""/>{{(weather.main.temp-273).toFixed(1)}}</div>
-                <div class="clText">
-                    <p>{{weather.weather[0].description}}</p>
-                    <p>{{weather.wind.speed}} m.s</p>
-                </div>
-            </li>
+            </ul>
+            <h2>Future weather forecast</h2>
+            <ul>
+                <li ng-repeat="(index, weather) in weatherCtrl.weatherWeekData">
+                    <div class="day">{{weather.dt_txt}}</div>
+                    <div class="temp"><img ng-src={{'http://openweathermap.org/img/w/'+weather.weather[0].icon+'.png'}} alt=""/>{{(weather.main.temp-273).toFixed(1)}}&deg;
 
-        </ul>
+                    </div>
+                    <div class="clText">
+                        <p>{{weather.weather[0].description}}</p>
+
+                        <p>{{(weather.wind.speed).toFixed(0)}} m.s</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
     </div>
 
 

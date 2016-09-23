@@ -2,7 +2,6 @@
   display: none !important;
 }
 
-
 @mixin clearfix() {
   &:before,
   &:after {
@@ -11,132 +10,142 @@
   }
 }
 
-body{
+body {
   font-family: Arial, sans-serif;
   padding-top: 50px;
 }
-.wrapper{
+
+.wrapper {
   max-width: 1000px;
   margin: 0 auto;
   @include clearfix();
 }
 
-.weather-container{
+.weather-container {
   font-size: 1em;
-  h2{
+  h2,
+  .location {
     text-align: center;
     margin-bottom: 2%;
     font-size: 22px;
     font-family: Arial, sans-serif;
   }
-
+  .location {
+    font-size: 18px;
+  }
   float: left;
   padding: 2%;
   box-sizing: border-box;
   width: 68%;
   background: #fff;
-  ul{
+  ul {
     width: 100%;
-    li:nth-child(2n){
+    li:nth-child(2n) {
       color: white;
       background-color: grey;
     }
-    li{
+    li {
       padding: 3%;
       border-radius: 5px;
       margin-bottom: 10px;
       display: block;
       height: 50px;
 
-
-      div{
+      div {
         display: inline-block;
       }
-      .day{
+      .day {
         width: 20%;
       }
-      .temp{
+      .temp {
         width: 25%;
         font-size: 1.2em;
       }
-      .clText{
+      .clText {
         width: 50%
       }
     }
   }
 }
-.cities-container{
+
+.cities-container {
   float: right;
   padding: 2%;
   box-sizing: border-box;
   width: 30%;
   text-align: center;
-  input{
+  input {
     padding: 5px;
     margin-bottom: 5px;
   }
-  button{
+  button {
     padding: 5px;
   }
-  .city{
+  .city {
     position: relative;
-    font-size: 0,8em;
+    font-size: 1em;
     width: 100%;
+    color: #000;
     padding: 15px;
-    box-sizing:border-box;
+    box-sizing: border-box;
     border-radius: 10px;
     background-color: #8487ec;
     margin-bottom: 5px;
     cursor: pointer;
-    transition: background-color 0.7s;
-    .delete{
+    transition: color 0.7s, background-color 0.7s;
+    .delete {
+      color: #000;
       position: absolute;
       right: 5%;
       top: 5%;
     }
-    &:hover{
+    &:hover {
       background-color: #4045f0;
     }
 
   }
+  .active.city {
+    color: white;
+  }
 }
-
-
-
 
 @media screen and (max-width: 767px) {
 
-    .cities-container{
-      width: 100%;
+  .cities-container {
+    width: 100%;
+    float: none;
+    .cities {
+      clear: both;
+      display: block;
+    }
+
+    .city {
       float: none;
-      .cities{
-        clear: both;
-        display: block;
+      width: 50%;
+      min-width: 250px;
+      margin: 8px auto;
+    }
 
-
-      .city{
-        margin-left: 1%;
-        width: 22%;
-        float: left;
-      }
-      }
-   input{
-     float: left;
-   }
-   button{
-     float: left;
-     margin-right: 1%;
-   }
+    input {
+      float: none;
+    }
+    button {
+      float: none;
+      margin-right: 1%;
+    }
 
   }
-  .weather-container{
+  .weather-container {
     font-size: 0.7em;
 
-    clear:both;
+    clear: both;
     float: none;
     margin: 0 auto;
+    ul {
+      li {
+        height: auto;
+      }
+    }
   }
-
-
 
 }
